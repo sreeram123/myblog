@@ -88,4 +88,20 @@ def del_com(request, postno, comno):
     return redirect('post', post.id)
 
 
+def comm_edit(request, postno, comno):
+    post = Post.objects.get(id=postno)
+    c = Comment.objects.get(id=comno)
+    if request.user.username != post.user.username:
+        raise PermissionDenied
+    if request.method == "GET":
+        template = 'blog/editcom.html'
+        context = {"comment": c, "post": post}
+        return render(request, template, context)
+    else:
+        comm = request.POST['comment']
+        user = User.objects.get(username=request.user.username)
+        com = Comment(id=comno, comment_text=comm, user=user, post_id=postno)
+        com.save()
+        return redirect('post', postno)
+
 

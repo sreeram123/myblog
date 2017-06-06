@@ -24,7 +24,7 @@
         <li class="active"> <a href="{% url 'add_post' %}" style="color: white">New Post<span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" style="color: white">Username</a></li>
+        <li><a href="#" style="color: white">{{ request.user.username }}</a></li>
         <li><a href="#" style="color: white">Logout</a></li>
       </ul>
 
