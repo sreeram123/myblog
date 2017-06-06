@@ -15,13 +15,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="http://127.0.0.1:8000/blog/"class="navbar-brand" style="color: white">My Blog</a>
+      <a href="#"class="navbar-brand" style="color: white">My Blog</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"> <a href="#" style="color: white">New post<span class="sr-only">(current)</span></a></li>
+        <li class="active"> <a href="{% url 'add_post' %}" style="color: white">New Post<span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" style="color: white">Username</a></li>
