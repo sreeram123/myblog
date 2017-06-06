@@ -19,11 +19,18 @@ def home(request):
 
 
 def post_detail(request, id):
-    template_name = "blog/post.html"
-    post = Post.objects.get(id=int(id))
-    comments = Comment.objects.filter(post=post)
-    context = {'post': post, 'comments': comments}
-    return render(request, template_name, context)
+    if request.method == "POST":
+        comment = request.POST['comment']
+        user = User.objects.get(username=request.user.username)
+        c = Comment(comment_text=comment, post_id=id, user=user)
+        c.save()
+        return redirect('post', id)
+    else:
+        template_name = "blog/post.html"
+        post = Post.objects.get(id=int(id))
+        comments = Comment.objects.filter(post=post)
+        context = {'post': post, 'comments': comments}
+        return render(request, template_name, context)
 
 
 def add_post(request):
@@ -31,7 +38,9 @@ def add_post(request):
         title = request.POST['title']
         content = request.POST['content']
         img = request.FILES['img']
-        is_published = request.POST['is_published']
+        is_published = "False"
+        if 'is_published'  in request.POST:
+            is_published = request.POST['is_published']
         user = User.objects.get(username=request.user.username)
         new_post = Post(title=title, user=user, content=content, img=img, is_published=is_published)
         new_post.save()
@@ -68,4 +77,15 @@ def delete_post(request, id):
             post.delete()
             return redirect('home')
     raise PermissionDenied
+
+
+def del_com(request, postno, comno):
+    post = Post.objects.get(id=int(postno))
+    if request.user.username != post.user.username:
+        raise PermissionDenied
+    com = Comment.objects.get(id=int(comno))
+    com.delete()
+    return redirect('post', post.id)
+
+
 

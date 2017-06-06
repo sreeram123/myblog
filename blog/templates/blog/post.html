@@ -21,6 +21,7 @@
                     <p>
                         {{ post.content }}
                     </p>
+                    <h5>Posted by {{ post.user }} | {{ post.pub_date }}</h5>
                 </div>
 
                 <div class="col-md-4">
@@ -31,6 +32,22 @@
         </div>
     </div>
 
+        <h3>Comments</h3>
+        {% for i in comments %}
+            <h6>{{ i.date }}  by {{ i.user }}</h6>
+            <h7>{{ i.comment_text }}  </h7><a href="/blog/{{ post.id }}/delcom/{{ i.id }}"><button>Delete</button> </a><br><br>
+        {% endfor %}
+
+        <div id="div1">
+        <form action="" method="post" >
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea name="comment" required class="form-control" placeholder="Enter comment" ></textarea>
+
+        </div>
+        <button type="submit" name="go" class="btn btn-primary btn-block">Post comment</button>
+        </form>
+        </div>
 
 
         {% endblock %}
