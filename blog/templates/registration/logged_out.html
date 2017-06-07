@@ -1,11 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Logout</title>
+    <link href="{% static 'blog/css/stylelogout.css' %}" rel="stylesheet">
 </head>
 <body>
+    <div id="div2">
     <a href="{% url 'login' %}">Login Again</a><br>
+    </div>
+    <div id="div3">
     <a href="{% url 'home' %}">Home</a>
+    </div>
 </body>
 </html>

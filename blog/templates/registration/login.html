@@ -1,19 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+     <link href="{% static 'blog/css/stylelogin.css' %}" rel="stylesheet">
 </head>
 <body>
-<h3>Login</h3>
+<h3 style="text-align:center">Login</h3>
+<div id="div1">
 <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <input type="text" name="username" placeholder="Username"><br>
     <input type="password" name="password" placeholder="Password"><br>
-    <button>Login</button>
+    <div id="div2">
+        <button>Login</button>
+    </div>
     <h5>Don't have an account?<a href="{% url 'signup' %}"> Sign Up</a></h5>
     <h5>Forgot Password?<a href="{% url 'password_reset' %}"> Reset Password</a></h5>
 </form>
+</div>
 {% if form.errors %}
     <p>Username or Password is wrong</p>
 {% endif %}
