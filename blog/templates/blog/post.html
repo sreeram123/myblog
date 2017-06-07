@@ -36,7 +36,7 @@
         {% for i in comments %}
             <h6>{{ i.date }}  by {{ i.user }}</h6>
             <h7>{{ i.comment_text }}  </h7>
-        <a href="/blog/{{ post.id }}/editcom/{{ i.id }}">Edit</a><br><br>
+        <a href="/blog/{{ post.id }}/editcom/{{ i.id }}">Edit</a>
         <a href="/blog/{{ post.id }}/delcom/{{ i.id }}">Delete</a><br><br>
         {% endfor %}
 
@@ -48,6 +48,7 @@
 
         </div>
         <button type="submit" name="go" class="btn btn-primary btn-block">Post Comment</button>
+
         </form>
         </div>
 

@@ -76,7 +76,8 @@ def delete_post(request, id):
         if post.user.username == request.user.username:
             post.delete()
             return redirect('home')
-    raise PermissionDenied
+        else:
+            raise PermissionDenied
 
 
 def del_com(request, postno, comno):
