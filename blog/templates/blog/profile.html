@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <link href="{% static 'blog/css/profstyle.css' %}" rel="stylesheet">
+</head>
+<body>
+<h3 style="text-align:center">About Me</h3>
+    <div id="div1">
+    <p>Username:{{ user.username }}</p>
+    <p>Name:{{ user.first_name }} {{ user.last_name }}</p>
+    <p>Email:{{ user.email }}</p>
+    <div id="div2">
+    <a href="/accounts/password_change"><button>Change My Password</button></a>
+    </div>
+    </div>
+</body>
+</html>

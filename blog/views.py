@@ -136,4 +136,11 @@ def signup(request):
     return render(request, template, context)
 
 
+def profile(request):
+    user = User.objects.get(username=request.user.username)
+    context = {"user": user}
+    template = 'blog/profile.html'
+    return render(request, template)
+
+
 
