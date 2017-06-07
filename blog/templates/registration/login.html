@@ -11,6 +11,8 @@
     <input type="text" name="username" placeholder="Username"><br>
     <input type="password" name="password" placeholder="Password"><br>
     <button>Login</button>
+    <h5>Don't have an account?<a href="{% url 'signup' %}"> Sign Up</a></h5>
+    <h5>Forgot Password?<a href="{% url 'password_reset' %}"> Reset Password</a></h5>
 </form>
 {% if form.errors %}
     <p>Username or Password is wrong</p>
