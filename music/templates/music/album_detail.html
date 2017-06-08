@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+
+<h1>{{ object.album_name }}</h1>
+<img height="150px" src="/media/{{ album.album_img }}" />
+
+{% for song in songs %}
+    <h4>{{ song.name }} by {{ song.artist }}</h4>
+{% endfor %}
+
+<button onclick="display()">Add Song</button>
+
+
+<div style="display: none;" id="form">
+    <h2>Add Song</h2>
+    <form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name"><br>
+    <input type="text" name="artist" placeholder="Artist"><br>
+    <input type="submit">
+</form>
+</div>
+<script>
+    function display()
+    {
+        form=document.getElementById('form');
+        form.style.display = 'block';
+    }
+</script>
+</body>
+</html>
